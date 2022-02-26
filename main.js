@@ -18,18 +18,22 @@ function pohybPanacka(event) {
 	
 	if (klavesa === 39) {
 		panacekX = (parseFloat(panacekX) + 10) + 'px';
-		panacekY = panacekY;
+		panacek.style.left = panacekX;
 		panacek.src = "obrazky/panacek-vpravo.png";
-		
-		console.log(panacekX);
 	}
 	if (klavesa === 37) {
+		panacekX = (parseFloat(panacekX) - 10) + 'px';
+		panacek.style.left = panacekX;
 		panacek.src = "obrazky/panacek-vlevo.png";
 	}
 	if (klavesa === 38) {
+		panacekY = (parseFloat(panacekY) - 10) + 'px';
+		panacek.style.top = panacekY;
 		panacek.src = "obrazky/panacek-nahoru.png";
 	}
 	if (klavesa === 40) {
+		panacekY = (parseFloat(panacekY) + 10) + 'px';
+		panacek.style.top = panacekY;
 		panacek.src = "obrazky/panacek.png";
 	}
 }
