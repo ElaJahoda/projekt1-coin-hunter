@@ -14,6 +14,16 @@ let panacek = document.getElementById('panacek');
 let panacekX = panacek.style.left = '150px';	
 let panacekY = panacek.style.top = '150px';
 
+let mince = document.getElementById('mince');
+let minceX = mince.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+let minceY = mince.style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
+console.log(minceX, minceY);
+
+function priNacteni() {
+	panacek;
+	mince;
+}
+
 function pohybPanacka(event) {
 let klavesa = event.keyCode;
 if (klavesa === 39 && (parseFloat(panacekX) + 10) <= window.innerWidth) {
@@ -31,27 +41,9 @@ if (klavesa === 38 && (parseFloat(panacekY) - 10) >= 0) {
 	panacek.style.top = panacekY;
 	panacek.src = "obrazky/panacek-nahoru.png";
 }
-if (klavesa === 40 && (parseFloat(panacekY) + 10) <= window.innerWidth) {
+if (klavesa === 40 && (parseFloat(panacekY) + 10) <= window.innerHeight) {
 	panacekY = (parseFloat(panacekY) + 10) + 'px';
 	panacek.style.top = panacekY;
 	panacek.src = "obrazky/panacek.png";
 }
 }
-
-// function pohybMoznyPlus() {
-// 	if ((parseFloat(panacekY) + 10) <= window.innerHeight && 
-// 	(parseFloat(panacekX) + 10) <= window.innerWidth) {
-// 		return true
-// 	} else {
-// 		return false
-// 	}
-// }
-
-// function pohybMoznyMinus() {
-// 	if ((parseFloat(panacekY) - 10) >= 0 && 
-// 	(parseFloat(panacekX) - 10) >= 0) {
-// 		return true
-// 	} else {
-// 		return false
-// 	}
-// }
