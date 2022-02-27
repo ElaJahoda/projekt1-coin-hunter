@@ -1,5 +1,4 @@
 //startPozice
-
 let panacek = document.getElementById('panacek');
 let panacekX = 150;	
 let panacekY = 150;
@@ -12,6 +11,8 @@ let minceY = Math.floor(Math.random() * window.innerHeight)
 let minceSirka = 36;
 let minceVyska = 36;
 
+let score = document.getElementById('score');
+
 function priNacteni() {
 	panacek.style.left = panacekX + 'px';
 	panacek.style.top = panacekY + 'px';
@@ -20,13 +21,16 @@ function priNacteni() {
 }
 
 function prekryti() {
-	console.log(panacekX, panacekY, minceX, minceY, panacekSirka, panacekVyska, minceSirka, minceVyska);
 	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || 
 	minceY + minceVyska < panacekY)) {
-	console.log('prekryti');
-} else {
-	console.log('nic')
-}
+	//mince na novou polohu
+	minceX = Math.floor(Math.random() * window.innerWidth);
+	minceY = Math.floor(Math.random() * window.innerHeight);
+	mince.style.left = minceX + 'px';
+	mince.style.top = minceY + 'px';
+	//pricist bod
+	score.textContent = parseFloat(score.textContent) + 1;
+    }
 }
 
 function pohybPanacka(event) {
