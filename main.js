@@ -17,6 +17,10 @@ function startZvuk(ElementSelector) {
 	document.querySelector(ElementSelector).play();
 }
 
+function stopZvuk(ElementSelector) {
+	document.querySelector(ElementSelector).pause();
+}
+
 function priNacteni() {
 	panacek.style.left = panacekX + 'px';
 	panacek.style.top = panacekY + 'px';
@@ -72,6 +76,7 @@ function pohybPanacka(event) {
 
 function vitez() {
 	if (score.textContent == 5) {
+		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
 		alert('Jsi vítěz! chceš hrát znovu?');
 		priNacteni();
