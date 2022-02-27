@@ -22,6 +22,7 @@ function priNacteni() {
 	panacek.style.top = panacekY + 'px';
 	mince.style.left = minceX + 'px';
 	mince.style.top = minceY + 'px';
+	score.textContent = 0;
 }
 
 function prekryti() {
@@ -36,6 +37,7 @@ function prekryti() {
 		mince.style.top = minceY + 'px';
 		//pricist bod
 		score.textContent = parseFloat(score.textContent) + 1;
+		vitez();
     }
 }
 
@@ -65,5 +67,13 @@ function pohybPanacka(event) {
 		panacek.style.top = panacekY  + 'px';
 		panacek.src = "obrazky/panacek.png";
 		prekryti();
+	}
+}
+
+function vitez() {
+	if (score.textContent == 5) {
+		startZvuk('#zvukfanfara');
+		alert('Jsi vítěz! chceš hrát znovu?');
+		priNacteni();
 	}
 }
