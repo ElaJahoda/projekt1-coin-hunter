@@ -6,12 +6,40 @@ let panacekSirka = 64;
 let panacekVyska = 70;
 
 let mince = document.getElementById('mince');
-let minceX = Math.floor(Math.random() * window.innerWidth);
-let minceY = Math.floor(Math.random() * window.innerHeight);
+// let minceX = generovaniMinceX();
+// let minceY = generovaniMinceY();
 let minceSirka = 36;
 let minceVyska = 36;
 
+let minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+let minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+
 let score = document.getElementById('score');
+
+// function generovaniMinceX() {
+// 	let minceX = Math.floor(Math.random() * window.innerWidth);
+// 	let minceSirka = 36;
+// 	if ((minceX + minceSirka) >= window.innerWidth) {
+// 		minceX = minceX - minceSirka;
+// 		return minceX;
+// 	} else {
+// 		minceX = minceX;
+// 		return minceX;
+// 	}
+// }
+
+// function generovaniMinceY() {
+// 	let minceY = Math.floor(Math.random() * window.innerHeight);
+// 	let minceVyska = 36;
+// 	if ((minceY + minceVyska) >= window.innerHeight) {
+// 		minceY = minceY - minceVyska;
+// 		return minceY;
+// 	} else {
+// 		minceY = minceY;
+// 		return minceY;
+// 	}
+// }
+
 
 function startZvuk(ElementSelector) {
 	document.querySelector(ElementSelector).play();
@@ -35,8 +63,8 @@ function prekryti() {
 		//zvuk mince
 		startZvuk('#zvukmince');
 		//mince na novou polohu
-		minceX = Math.floor(Math.random() * window.innerWidth);
-		minceY = Math.floor(Math.random() * window.innerHeight);
+		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+		minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
 		mince.style.left = minceX + 'px';
 		mince.style.top = minceY + 'px';
 		//pricist bod
@@ -48,7 +76,7 @@ function prekryti() {
 function pohybPanacka(event) {
 	let klavesa = event.keyCode;
 	startZvuk('#hudba');
-	if (klavesa === 39 && (panacekX + 10) <= window.innerWidth) {
+	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
 		panacek.src = "obrazky/panacek-vpravo.png";
@@ -66,7 +94,7 @@ function pohybPanacka(event) {
 		panacek.src = "obrazky/panacek-nahoru.png";
 		prekryti();
 	}
-	if (klavesa === 40 && (panacekY + 10) <= window.innerHeight) {
+	if (klavesa === 40 && (panacekY + 10) <= (window.innerHeight - panacekVyska)) {
 		panacekY = panacekY + 10;
 		panacek.style.top = panacekY  + 'px';
 		panacek.src = "obrazky/panacek.png";
