@@ -19,13 +19,13 @@ body {
 	height: 100vh;
 	background-color: var(--pozadi);
 	background-repeat: repeat;
-	background-image: url('obrazky/pozadi/weather.png');
+	background-image: url('obrazky/pozadi/swirl.png');
 
 	/*  vyzkoušej i jiná pozadí :)
 	background-image: url('obrazky/pozadi/geometry.png');
 	background-image: url('obrazky/pozadi/round.png');
 	background-image: url('obrazky/pozadi/whirlpool.png');
-	background-image: url('obrazky/pozadi/swirl.png');
+	background-image: url('obrazky/pozadi/weather.png');
 	background-image: url('obrazky/pozadi/seigaiha.png');
 	background-image: url('obrazky/pozadi/hypnotize.png');
 	*/
@@ -34,7 +34,17 @@ body {
 #score {
 	position: absolute;
 	top: 50px;
-	left: 50px;
+	left: 70px;
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 36px;
+	z-index: 999;
+	color: var(--score);
+}
+
+#score2 {
+	position: absolute;
+	top: 50px;
+	right: 80px;
 	font-family: 'Press Start 2P', sans-serif;
 	font-size: 36px;
 	z-index: 999;
@@ -42,10 +52,10 @@ body {
 }
 
 #panacek,
-#mince {
+#mince, #mince2, #mince3 {
 	position: absolute;
 }
 
-#panacek {
+#panacek, #panacek2 {
 	z-index: 1;
 }

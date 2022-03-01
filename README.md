@@ -24,6 +24,9 @@ Technický popis
 - Na startu hry umístíme minci na náhodnou pozici.
 - Při každém pohybu testujeme, zda se panáček neprotíná s mincí - v JS připravená podmínka pro průnik dvou obdélníků.
 - Pokud panáček sebere minci, posuneme minci na jinou náhodnou pozici.
+- pridat dalsiho hrace a dalsi druhy minci
+- pridat casovy limit
+- pridat prekazky na hraci plochu
 
 Možná vylepšení, pro ultimátní zážitek ze hry!
 ---
