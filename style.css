@@ -34,7 +34,7 @@ body {
 #score {
 	position: absolute;
 	top: 50px;
-	left: 70px;
+	right: 70px;
 	font-family: 'Press Start 2P', sans-serif;
 	font-size: 36px;
 	z-index: 999;
@@ -44,14 +44,14 @@ body {
 #score2 {
 	position: absolute;
 	top: 50px;
-	right: 80px;
+	left: 70px;
 	font-family: 'Press Start 2P', sans-serif;
 	font-size: 36px;
 	z-index: 999;
 	color: var(--score);
 }
 
-#panacek,
+#panacek, #panacek2,
 #mince, #mince2, #mince3 {
 	position: absolute;
 }
