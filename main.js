@@ -79,7 +79,7 @@ function prekryti2() {
 		mince.style.left = minceX + 'px';
 		mince.style.top = minceY + 'px';
 		//pricist bod
-		score2.textContent = parseFloat(score.textContent) + 1;
+		score2.textContent = parseFloat(score2.textContent) + 1;
 		vitez();
 	}
 
@@ -142,7 +142,13 @@ function vitez() {
 	if (score.textContent == 5) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
-		alert('Jsi vítěz! chceš hrát znovu?');
+		alert('Růžový hrdino, jsi vítěz! Chcete hrát znovu?');
+		priNacteni();
+	}
+	if (score2.textContent == 5) {
+		stopZvuk('#hudba');
+		startZvuk('#zvukfanfara');
+		alert('Tyrkysový hrdino, jsi vítěz! Chcete hrát znovu?');
 		priNacteni();
 	}
 }
