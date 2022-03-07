@@ -2,12 +2,12 @@ let panacekSirka = 64;
 let panacekVyska = 70;
 
 let panacek = document.getElementById('panacek');
-let panacekX = 250;	
-let panacekY = 150;
+let panacekX = window.innerWidth / 2 + (panacekSirka / 2);	
+let panacekY = window.innerHeight / 2 - (panacekVyska / 2);
 
 let panacek2 = document.getElementById('panacek2');
-let panacek2X = 150;
-let panacek2Y = 150;
+let panacek2X = window.innerWidth / 2 - (panacekSirka / 2);
+let panacek2Y = window.innerHeight / 2 - (panacekVyska / 2);
 
 let minceSirka = 36;
 let minceVyska = 36;
