@@ -1,33 +1,55 @@
-//startPozice
-let panacek = document.getElementById('panacek');
-let panacek2 = document.getElementById('panacek2');
-
-let panacekX = 250;	
-let panacekY = 150;
-let panacek2X = 150;
-let panacek2Y = 150;
-
 let panacekSirka = 64;
 let panacekVyska = 70;
 
-let mince = document.getElementById('mince');
-let mince2 = document.getElementById('mince2');
-let mince3 = document.getElementById('mince3');
+let panacek = document.getElementById('panacek');
+let panacekX = 250;	
+let panacekY = 150;
+
+let panacek2 = document.getElementById('panacek2');
+let panacek2X = 150;
+let panacek2Y = 150;
 
 let minceSirka = 36;
 let minceVyska = 36;
 
-let minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-let minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+let mince = document.getElementById('mince');
+let minceX = generMinceX();
+let minceY = generMinceY();
 
-let mince2X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-let mince2Y = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+let mince2 = document.getElementById('mince2');
+let mince2X = generMinceX();
+let mince2Y = generMinceY();
 
-let mince3X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-let mince3Y = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+let mince3 = document.getElementById('mince3');
+let mince3X = generMinceX();
+let mince3Y = generMinceY();
 
 let score = document.getElementById('score');
 let score2 = document.getElementById('score2');
+
+function generMinceX() {
+	let x = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+	return x;
+}
+function generMinceY() {
+	let y = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+	return y;
+}
+
+function umisteniMince(minceDruh, x, y) {
+	(minceDruh).style.left = x + 'px';
+	(minceDruh).style.top = y + 'px';
+}
+
+function umisteniPanacka(panacekDruh) {
+	(panacekDruh).style.left = panacekX + 'px';
+	(panacekDruh).style.top = panacekY + 'px';
+}
+
+function umisteniPanacka2(panacekDruh) {
+	(panacekDruh).style.left = panacek2X + 'px';
+	(panacekDruh).style.top = panacek2Y + 'px';
+}
 
 function startZvuk(ElementSelector) {
 	document.querySelector(ElementSelector).play();
@@ -38,16 +60,14 @@ function stopZvuk(ElementSelector) {
 }
 
 function priNacteni() {
-	panacek.style.left = panacekX + 'px';
-	panacek.style.top = panacekY + 'px';
-	panacek2.style.left = panacek2X + 'px';
-	panacek2.style.top = panacek2Y + 'px';
-	mince.style.left = minceX + 'px';
-	mince.style.top = minceY + 'px';
-	mince2.style.left = mince2X + 'px';
-	mince2.style.top = mince2Y + 'px';
-	mince3.style.left = mince3X + 'px';
-	mince3.style.top = mince3Y + 'px';
+	umisteniPanacka(panacek);
+	umisteniPanacka2(panacek2);
+	umisteniMince(mince, minceX, minceY);
+	console.log(minceX, minceY)
+	umisteniMince(mince2, mince2X, mince2Y);
+	// console.log(mince2X, mince2Y)
+	umisteniMince(mince3, mince3X, mince3Y);
+	// console.log(mince3X, mince3Y)
 	score.textContent = 0;
 	score2.textContent = 0;
 }
@@ -62,6 +82,8 @@ function prekryti() {
 		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
 		mince.style.left = minceX + 'px';
 		mince.style.top = minceY + 'px';
+		console.log(minceX, minceY)
+		// umisteniMince(mince); 
 		//pricist bod
 		score.textContent = parseFloat(score.textContent) + 1;
 		vitez();
@@ -70,7 +92,7 @@ function prekryti() {
 
 function prekryti2() {
 	if (!(panacek2X + panacekSirka < minceX || minceX + minceSirka < panacek2X || panacek2Y + panacekVyska < minceY || 
-		minceY + minceVyska < panacek2Y)) {
+	minceY + minceVyska < panacek2Y)) {
 		//zvuk mince
 		startZvuk('#zvukmince');
 		//mince na novou polohu
@@ -88,6 +110,8 @@ function prekryti2() {
 function pohybPanacka(event) {
 	let klavesa = event.keyCode;
 	startZvuk('#hudba');
+	console.log(panacekX, panacekY);
+	console.log(panacek2X, panacek2Y);
 	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
