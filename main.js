@@ -41,14 +41,9 @@ function umisteniMince(minceDruh, x, y) {
 	(minceDruh).style.top = y + 'px';
 }
 
-function umisteniPanacka(panacekDruh) {
-	(panacekDruh).style.left = panacekX + 'px';
-	(panacekDruh).style.top = panacekY + 'px';
-}
-
-function umisteniPanacka2(panacekDruh) {
-	(panacekDruh).style.left = panacek2X + 'px';
-	(panacekDruh).style.top = panacek2Y + 'px';
+function umisteniPanacka(panacekDruh, x, y) {
+	(panacekDruh).style.left = x + 'px';
+	(panacekDruh).style.top = y + 'px';
 }
 
 function startZvuk(ElementSelector) {
@@ -60,14 +55,11 @@ function stopZvuk(ElementSelector) {
 }
 
 function priNacteni() {
-	umisteniPanacka(panacek);
-	umisteniPanacka2(panacek2);
+	umisteniPanacka(panacek, panacekX, panacekY);
+	umisteniPanacka(panacek2, panacek2X, panacek2Y);
 	umisteniMince(mince, minceX, minceY);
-	console.log(minceX, minceY)
 	umisteniMince(mince2, mince2X, mince2Y);
-	// console.log(mince2X, mince2Y)
 	umisteniMince(mince3, mince3X, mince3Y);
-	// console.log(mince3X, mince3Y)
 	score.textContent = 0;
 	score2.textContent = 0;
 }
@@ -78,11 +70,8 @@ function prekryti() {
 		//zvuk mince
 		startZvuk('#zvukmince');
 		//mince na novou polohu
-		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
-		mince.style.left = minceX + 'px';
-		mince.style.top = minceY + 'px';
-		console.log(minceX, minceY)
+		umisteniMince(mince, minceX, minceY);
+		console.log(minceX, minceY);
 		// umisteniMince(mince); 
 		//pricist bod
 		score.textContent = parseFloat(score.textContent) + 1;
@@ -96,10 +85,8 @@ function prekryti2() {
 		//zvuk mince
 		startZvuk('#zvukmince');
 		//mince na novou polohu
-		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
-		mince.style.left = minceX + 'px';
-		mince.style.top = minceY + 'px';
+		umisteniMince(mince, minceX, minceY);
+		console.log(minceX, minceY);
 		//pricist bod
 		score2.textContent = parseFloat(score2.textContent) + 1;
 		vitez();
@@ -110,8 +97,8 @@ function prekryti2() {
 function pohybPanacka(event) {
 	let klavesa = event.keyCode;
 	startZvuk('#hudba');
-	console.log(panacekX, panacekY);
-	console.log(panacek2X, panacek2Y);
+	// console.log(panacekX, panacekY);
+	// console.log(panacek2X, panacek2Y);
 	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
