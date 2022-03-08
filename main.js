@@ -67,31 +67,67 @@ function priNacteni() {
 function prekryti() {
 	if (!(panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || 
 	minceY + minceVyska < panacekY)) {
-		//zvuk mince
 		startZvuk('#zvukmince');
-		//mince na novou polohu
-		umisteniMince(mince, minceX, minceY);
-		console.log(minceX, minceY);
-		// umisteniMince(mince); 
-		//pricist bod
-		score.textContent = parseFloat(score.textContent) + 1;
+		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+		mince.style.left = minceX + 'px';
+		mince.style.top = minceY + 'px';
+		score.textContent = parseFloat(score.textContent) + 3;
 		vitez();
     }
+	if (!(panacekX + panacekSirka < mince2X || mince2X + minceSirka < panacekX || panacekY + panacekVyska < mince2Y || 
+		mince2Y + minceVyska < panacekY)) {
+			startZvuk('#zvukmince');
+			mince2X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+			mince2Y = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+			mince2.style.left = mince2X + 'px';
+			mince2.style.top = mince2Y + 'px';
+			score.textContent = parseFloat(score.textContent) + 2;
+			vitez();
+		}
+	if (!(panacekX + panacekSirka < mince3X || mince3X + minceSirka < panacekX || panacekY + panacekVyska < mince3Y || 
+		mince3Y + minceVyska < panacekY)) {
+			startZvuk('#zvukmince');
+			mince3X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+			mince3Y = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+			mince3.style.left = mince3X + 'px';
+			mince3.style.top = mince3Y + 'px';
+			score.textContent = parseFloat(score.textContent) + 1;
+			vitez();
+		}
 }
 
 function prekryti2() {
 	if (!(panacek2X + panacekSirka < minceX || minceX + minceSirka < panacek2X || panacek2Y + panacekVyska < minceY || 
 	minceY + minceVyska < panacek2Y)) {
-		//zvuk mince
 		startZvuk('#zvukmince');
-		//mince na novou polohu
-		umisteniMince(mince, minceX, minceY);
-		console.log(minceX, minceY);
-		//pricist bod
-		score2.textContent = parseFloat(score2.textContent) + 1;
+		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+		mince.style.left = minceX + 'px';
+		mince.style.top = minceY + 'px';
+		score2.textContent = parseFloat(score2.textContent) + 3;
 		vitez();
 	}
-
+	if (!(panacek2X + panacekSirka < mince2X || mince2X + minceSirka < panacek2X || panacek2Y + panacekVyska < mince2Y || 
+		mince2Y + minceVyska < panacek2Y)) {
+			startZvuk('#zvukmince');
+			mince2X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+			mince2Y = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+			mince2.style.left = mince2X + 'px';
+			mince2.style.top = mince2Y + 'px';
+			score2.textContent = parseFloat(score2.textContent) + 2;
+			vitez();
+		}
+	if (!(panacek2X + panacekSirka < mince3X || mince3X + minceSirka < panacek2X || panacek2Y + panacekVyska < mince3Y || 
+		mince3Y + minceVyska < panacek2Y)) {
+			startZvuk('#zvukmince');
+			mince3X = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+			mince3Y = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+			mince3.style.left = mince3X + 'px';
+			mince3.style.top = mince3Y + 'px';
+			score2.textContent = parseFloat(score.textContent) + 1;
+			vitez();
+		}
 }
 
 function pohybPanacka(event) {
@@ -150,13 +186,13 @@ function pohybPanacka(event) {
 }
 
 function vitez() {
-	if (score.textContent == 5) {
+	if (score.textContent >= 15) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
 		alert('Růžový hrdino, jsi vítěz! Chcete hrát znovu?');
 		priNacteni();
 	}
-	if (score2.textContent == 5) {
+	if (score2.textContent >= 15) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
 		alert('Tyrkysový hrdino, jsi vítěz! Chcete hrát znovu?');
