@@ -68,10 +68,13 @@ function prekryti() {
 	if (!(panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || 
 	minceY + minceVyska < panacekY)) {
 		startZvuk('#zvukmince');
-		minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
-		minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
-		mince.style.left = minceX + 'px';
-		mince.style.top = minceY + 'px';
+		minceX = generMinceX();
+		minceY = generMinceY();
+		umisteniMince(mince, minceX, minceY);
+		// minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+		// minceY = Math.floor(Math.random() * (window.innerHeight - minceSirka));
+		// mince.style.left = minceX + 'px';
+		// mince.style.top = minceY + 'px';
 		score.textContent = parseFloat(score.textContent) + 3;
 		vitez();
     }
@@ -128,56 +131,56 @@ function prekryti2() {
 			score2.textContent = parseFloat(score.textContent) + 1;
 			vitez();
 		}
+		console.log(map)
 }
 
-function pohybPanacka(event) {
-	let klavesa = event.keyCode;
-	startZvuk('#hudba');
-	// console.log(panacekX, panacekY);
-	// console.log(panacek2X, panacek2Y);
-	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
+let map = {};
+onkeydown = onkeyup = function pohybPanacka(e){
+    map[e.keyCode] = e.type == 'keydown';
+// 	console.log(map)
+	if (map[39] == true && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
 		panacek.src = "obrazky/panacek-vpravo.png";
 		prekryti();
-	}
-	if (klavesa === 37 && (panacekX - 10) >= 0) {
+        }
+	if (map[37] == true && (panacekX - 10) >= 0) {
 		panacekX = panacekX - 10;
 		panacek.style.left = panacekX  + 'px';
 		panacek.src = "obrazky/panacek-vlevo.png";
 		prekryti();
 	}
-	if (klavesa === 38 && (panacekY - 10) >= 0) {
+	if (map[38] == true && (panacekY - 10) >= 0) {
 		panacekY = panacekY - 10;
 		panacek.style.top = panacekY  + 'px';
 		panacek.src = "obrazky/panacek-nahoru.png";
 		prekryti();
 	}
-	if (klavesa === 40 && (panacekY + 10) <= (window.innerHeight - panacekVyska)) {
+	if (map[40] == true && (panacekY + 10) <= (window.innerHeight - panacekVyska)) {
 		panacekY = panacekY + 10;
 		panacek.style.top = panacekY  + 'px';
 		panacek.src = "obrazky/panacek.png";
 		prekryti();
 	}
-	if (klavesa === 68 && (panacek2X + 10) <= (window.innerWidth - panacekSirka)) {
-		panacek2X = panacek2X + 10;
-		panacek2.style.left = panacek2X + 'px';
-		panacek2.src = "obrazky/panacek-vpravo - kopie.png";
-		prekryti2();
+	if (map[68] == true && (panacek2X + 10) <= (window.innerWidth - panacekSirka)) {		
+			panacek2X = panacek2X + 10;
+			panacek2.style.left = panacek2X + 'px';
+			panacek2.src = "obrazky/panacek-vpravo - kopie.png";
+			prekryti2();
 	}
-	if (klavesa === 65 && (panacek2X - 10) >= 0) {
+	if (map[65] == true && (panacek2X - 10) >= 0) {
 		panacek2X = panacek2X - 10;
 		panacek2.style.left = panacek2X  + 'px';
 		panacek2.src = "obrazky/panacek-vlevo - kopie.png";
 		prekryti2();
 	}
-	if (klavesa === 87 && (panacek2Y - 10) >= 0) {
+	if (map[87] == true && (panacek2Y - 10) >= 0) {
 		panacek2Y = panacek2Y - 10;
 		panacek2.style.top = panacek2Y  + 'px';
 		panacek2.src = "obrazky/panacek-nahoru - kopie.png";
 		prekryti2();
 	}
-	if (klavesa === 83 && (panacek2Y + 10) <= (window.innerHeight - panacekVyska)) {
+	if (map[83] == true && (panacek2Y + 10) <= (window.innerHeight - panacekVyska)) {
 		panacek2Y = panacek2Y + 10;
 		panacek2.style.top = panacek2Y  + 'px';
 		panacek2.src = "obrazky/panacek - kopie.png";
@@ -186,16 +189,38 @@ function pohybPanacka(event) {
 }
 
 function vitez() {
-	if (score.textContent >= 15) {
+	if (score.textContent >= 1) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
 		alert('Růžový hrdino, jsi vítěz! Chcete hrát znovu?');
-		priNacteni();
+		hratZnovu();
 	}
-	if (score2.textContent >= 15) {
+	if (score2.textContent >= 1) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
 		alert('Tyrkysový hrdino, jsi vítěz! Chcete hrát znovu?');
-		priNacteni();
+		hratZnovu();
 	}
+}
+
+function hratZnovu() {
+	panacek.src = "obrazky/panacek.png";
+	panacekX = window.innerWidth / 2 + (panacekSirka / 2);	
+	panacekY = window.innerHeight / 2 - (panacekVyska / 2);
+	umisteniPanacka(panacek, panacekX, panacekY);
+	panacek2.src = "obrazky/panacek - kopie.png";
+	panacek2X = window.innerWidth / 2 - (panacekSirka / 2);	
+	panacek2Y = window.innerHeight / 2 - (panacekVyska / 2);
+	umisteniPanacka(panacek2, panacek2X, panacek2Y);
+	minceX = generMinceX();
+	minceY = generMinceY();
+	mince2X = generMinceX();
+	mince2Y = generMinceY();
+	mince3X = generMinceX();
+	mince3Y = generMinceY();
+	umisteniMince(mince, minceX, minceY);
+	umisteniMince(mince2, mince2X, mince2Y);
+	umisteniMince(mince3, mince3X, mince3Y);
+	score.textContent = 0;
+	score2.textContent = 0;
 }

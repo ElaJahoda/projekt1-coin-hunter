@@ -27,6 +27,7 @@ Technický popis
 - pridat dalsiho hrace a dalsi druhy minci
 - pridat casovy limit
 - pridat prekazky na hraci plochu
+- tlacitko pro mute hudby
 
 Možná vylepšení, pro ultimátní zážitek ze hry!
 ---
