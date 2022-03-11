@@ -1,45 +1,19 @@
 //startPozice
 let panacek = document.getElementById('panacek');
-let panacekX = 150;	
-let panacekY = 150;
-let panacekSirka = 64;
-let panacekVyska = 70;
+let panacekSirka = panacek.width;
+let panacekVyska = panacek.height;
+
+let panacekX = window.innerWidth / 2 + (panacekSirka / 2);	
+let panacekY = window.innerHeight / 2 - (panacekVyska / 2);
 
 let mince = document.getElementById('mince');
-// let minceX = generovaniMinceX();
-// let minceY = generovaniMinceY();
-let minceSirka = 36;
-let minceVyska = 36;
+let minceSirka = mince.width;
+let minceVyska = mince.height;
 
 let minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
 let minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
 
 let score = document.getElementById('score');
-
-// function generovaniMinceX() {
-// 	let minceX = Math.floor(Math.random() * window.innerWidth);
-// 	let minceSirka = 36;
-// 	if ((minceX + minceSirka) >= window.innerWidth) {
-// 		minceX = minceX - minceSirka;
-// 		return minceX;
-// 	} else {
-// 		minceX = minceX;
-// 		return minceX;
-// 	}
-// }
-
-// function generovaniMinceY() {
-// 	let minceY = Math.floor(Math.random() * window.innerHeight);
-// 	let minceVyska = 36;
-// 	if ((minceY + minceVyska) >= window.innerHeight) {
-// 		minceY = minceY - minceVyska;
-// 		return minceY;
-// 	} else {
-// 		minceY = minceY;
-// 		return minceY;
-// 	}
-// }
-
 
 function startZvuk(ElementSelector) {
 	document.querySelector(ElementSelector).play();
@@ -55,6 +29,7 @@ function priNacteni() {
 	mince.style.left = minceX + 'px';
 	mince.style.top = minceY + 'px';
 	score.textContent = 0;
+	casovac();
 }
 
 function prekryti() {
@@ -75,7 +50,7 @@ function prekryti() {
 
 function pohybPanacka(event) {
 	let klavesa = event.keyCode;
-	startZvuk('#hudba');
+	// startZvuk('#hudba');
 	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
@@ -106,7 +81,59 @@ function vitez() {
 	if (score.textContent == 5) {
 		stopZvuk('#hudba');
 		startZvuk('#zvukfanfara');
-		alert('Jsi vítěz! chceš hrát znovu?');
-		priNacteni();
+		stopCas();
+		alert('Jsi vítěz! Dosažený čas: ' + min + ':' + sek + ' Chceš hrát znovu?');
+		novaHra();
 	}
+}
+
+function novaHra() {
+	panacekX = window.innerWidth / 2 + (panacekSirka / 2);	
+	panacekY = window.innerHeight / 2 - (panacekVyska / 2);
+	minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
+	minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
+	priNacteni();
+	min = 00;
+	sek = 00;
+	minuty.innerHTML = min;
+	sekundy.innerHTML = sek;
+}
+
+
+let sekundy = document.getElementById('sekundy');
+let sek = 00;
+let minuty = document.getElementById('minuty');
+let min = 00;
+let cas;
+
+function casovac() {
+	cas = setInterval(startCas, 1000);
+	
+	function startCas() {
+	sek++;
+	if (sek <= 9) {
+		sekundy.innerHTML = '0' + sek;
+	}
+	if (sek > 9) {
+		sekundy.innerHTML = sek;
+	}
+	if (sek > 59) {
+		min++;
+		minuty.innerHTML = '0' + min;
+		sek = 0;
+		sekundy.innerHTML = '0' + sek;
+	}
+	if (min <= 9) {
+		minuty.innerHTML = '0' + min;
+	}
+	if (min > 9) {
+		minuty.innerHTML = min;
+	}
+}
+
+}
+
+
+function stopCas() {
+	clearInterval(cas);
 }
