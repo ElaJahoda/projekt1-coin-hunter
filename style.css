@@ -79,3 +79,13 @@ body {
 #panacek {
 	z-index: 1;
 }
+
+#ticho {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 22px;
+	z-index: 999;
+	color: var(--score);
+}

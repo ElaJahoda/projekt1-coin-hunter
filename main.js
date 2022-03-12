@@ -137,3 +137,27 @@ function casovac() {
 function stopCas() {
 	clearInterval(cas);
 }
+
+let ticho = document.getElementById('ticho');
+console.log(ticho.src, hudba, 1);
+// let hudba = document.getElementById('hudba');
+ticho.src = "obrazky/muted_icon.png";
+console.log(ticho.src, 2);
+
+function zmenaZvuk() {
+	if(ticho.src == "file:///C:/Users/Evi%C4%8Dka/Documents/Moje/Studium/IT/JS/Czechitas-kurz_JS/lekce3/projekt1-coin-hunter/obrazky/muted_icon.png") {
+		console.log('jedu', ticho.src, 3);
+		ticho.src = "obrazky/volume_icon.png";
+		// hudba.play();
+		console.log('jedu', ticho.src, 4);
+	} else {
+		ticho.src = "obrazky/muted_icon.png";
+		// hudba.pause();
+		console.log('nejedu', ticho.src, 5);
+	}
+}
+
+function tichoFunkce(x) {
+	ticho.src =  x ;
+	console.log(ticho.src, 6);
+}
