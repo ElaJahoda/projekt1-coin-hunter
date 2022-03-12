@@ -15,6 +15,20 @@ let minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
 
 let score = document.getElementById('score');
 
+let hudbaHraje = 0;
+
+let hudba = document.getElementById('hudba');
+let ticho = document.getElementById('ticho');
+ticho.src = "obrazky/muted_icon.png";
+
+let casBezi = 0;
+
+let sekundy = document.getElementById('sekundy');
+let sek = 0;
+let minuty = document.getElementById('minuty');
+let min = 0;
+let cas;
+
 function startZvuk(ElementSelector) {
 	document.querySelector(ElementSelector).play();
 }
@@ -29,7 +43,6 @@ function priNacteni() {
 	mince.style.left = minceX + 'px';
 	mince.style.top = minceY + 'px';
 	score.textContent = 0;
-	casovac();
 }
 
 function prekryti() {
@@ -50,7 +63,10 @@ function prekryti() {
 
 function pohybPanacka(event) {
 	let klavesa = event.keyCode;
-	// startZvuk('#hudba');
+	if(casBezi == 0) {
+		casovac();
+		casBezi = 1;
+	}
 	if (klavesa === 39 && (panacekX + 10) <= (window.innerWidth - panacekSirka)) {
 		panacekX = panacekX + 10;
 		panacek.style.left = panacekX + 'px';
@@ -93,18 +109,11 @@ function novaHra() {
 	minceX = Math.floor(Math.random() * (window.innerWidth - minceSirka));
 	minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
 	priNacteni();
-	min = 00;
-	sek = 00;
+	min = '00';
+	sek = '00';
 	minuty.innerHTML = min;
 	sekundy.innerHTML = sek;
 }
-
-
-let sekundy = document.getElementById('sekundy');
-let sek = 00;
-let minuty = document.getElementById('minuty');
-let min = 00;
-let cas;
 
 function casovac() {
 	cas = setInterval(startCas, 1000);
@@ -129,35 +138,22 @@ function casovac() {
 	if (min > 9) {
 		minuty.innerHTML = min;
 	}
-}
-
-}
-
-
-function stopCas() {
-	clearInterval(cas);
-}
-
-let ticho = document.getElementById('ticho');
-console.log(ticho.src, hudba, 1);
-// let hudba = document.getElementById('hudba');
-ticho.src = "obrazky/muted_icon.png";
-console.log(ticho.src, 2);
-
-function zmenaZvuk() {
-	if(ticho.src == "file:///C:/Users/Evi%C4%8Dka/Documents/Moje/Studium/IT/JS/Czechitas-kurz_JS/lekce3/projekt1-coin-hunter/obrazky/muted_icon.png") {
-		console.log('jedu', ticho.src, 3);
-		ticho.src = "obrazky/volume_icon.png";
-		// hudba.play();
-		console.log('jedu', ticho.src, 4);
-	} else {
-		ticho.src = "obrazky/muted_icon.png";
-		// hudba.pause();
-		console.log('nejedu', ticho.src, 5);
 	}
 }
 
-function tichoFunkce(x) {
-	ticho.src =  x ;
-	console.log(ticho.src, 6);
+function stopCas() {
+	clearInterval(cas);
+	casBezi = 0;
+}
+
+function zmenaZvuk() {
+	if(hudbaHraje == 0) {
+		ticho.src = "obrazky/volume_icon.png";
+		startZvuk('#hudba');
+		hudbaHraje = 1;
+	} else {
+		ticho.src = "obrazky/muted_icon.png";
+		stopZvuk('#hudba');
+		hudbaHraje = 0;
+	}
 }
