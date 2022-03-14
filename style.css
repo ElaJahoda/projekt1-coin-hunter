@@ -22,6 +22,9 @@ body {
 	background-image: url('obrazky/pozadi/weather.png');
 	font-family: 'Press Start 2P', sans-serif;
 	font-size: 22px;
+	border: 5px;
+	border-color: red;
+	border-style: inset;
 
 	/*  vyzkoušej i jiná pozadí :)
 	background-image: url('obrazky/pozadi/geometry.png');
@@ -88,4 +91,50 @@ body {
 	font-size: 22px;
 	z-index: 999;
 	color: var(--score);
+}
+
+#nazev {
+	position: absolute;
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 64px;
+	z-index: 999;
+	color: var(--score);
+}
+
+#popis {
+	position: absolute;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 14px;
+	z-index: 999;
+	color: var(--score);
+	background-color: white;
+}
+
+span {
+	font-size: 72px;
+}
+
+#vyhra {
+	position: absolute;
+	padding: 10px 10px 80px 10px;
+	text-align: center;
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 34px;
+	z-index: 999;
+	color: var(--score);
+	background-color: white;
+	border: 15px solid red;
+}
+
+#blik {
+	border: 15px solid pink;
+}
+
+#tlacitka {
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	z-index: 999;
 }

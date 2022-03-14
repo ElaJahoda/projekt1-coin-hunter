@@ -17,7 +17,7 @@
 	
 	<div id="score">Score: 0</div>
 
-	<span id="minuty">00</span><span id="dvojtecka">:</span><span id="sekundy">00</span>
+	<div id="casovacId"><span id="minuty">00</span><span id="dvojtecka">:</span><span id="sekundy">00</span></div>
 
 	<audio id="hudba" src="zvuky/hudba.mp3" loop></audio>
 
@@ -27,6 +27,15 @@
 
 	<img id="ticho" src="obrazky/muted_icon.png" alt="Ticho" onclick="zmenaZvuk()">
 
+	<div id="nazev"><span>COIN</span> hunter</div>
+
+	<div id="popis">Pohybuj panáčkem pomocí šipek a co nejrychleji nasbírej 5 mincí.<br> 
+		Zapíšeš se na listinu rekordmanů?</div>
+
+	<div id="vyhra">Jsi vítěz!</div>
+	
+	<div id="tlacitka"><button id="ano" onclick="ano()">Ano</button><button id="ne" onclick="ne()">Ne</button></div>
+	
 	<script src="main.js"></script>
 </body>
 </html>
