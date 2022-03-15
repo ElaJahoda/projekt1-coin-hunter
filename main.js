@@ -5,6 +5,7 @@ let mince, mineX, minceY, minceSirka, minceVyska;
 
 // tato funkce se spustí při načtení stránky
 // tj. ve chvíli, kdy je načtené komplet HTML, CSS a všechny obrázky a zvuky
+// TEST
 function priNacteniStranky() {
 
 	// do globálních proměnných si uložíme odkaz na objekty panáčka a mince,
