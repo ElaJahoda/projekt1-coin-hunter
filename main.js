@@ -162,7 +162,7 @@ function novaHra() {
 	minceY = Math.floor(Math.random() * (window.innerHeight - minceVyska));
 	priNacteni();
 	casBezi = 0;
-	min = '0';
+	min = '00';
 	sek = '00';
 	minuty.innerHTML = min;
 	sekundy.innerHTML = sek;
@@ -170,7 +170,7 @@ function novaHra() {
 
 function casovac() {
 	cas = setInterval(startCas, 1000);
-
+min = '0';
 	function startCas() {
 	sek++;
 	if (sek <= 9) {
