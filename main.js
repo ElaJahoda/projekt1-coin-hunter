@@ -68,7 +68,7 @@ function poziceNazvu() {
 }
 
 function pozicePopisu() {
-	let popisX = 5;
+	let popisX = window.innerWidth / 2 - 350;
 	let popisY = window.innerHeight /2 + 80;
 	popis.style.left = popisX + 'px';
 	popis.style.top = popisY + 'px';

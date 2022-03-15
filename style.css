@@ -103,10 +103,13 @@ body {
 
 #popis {
 	position: absolute;
+	max-width: 50vw;
+	height: auto;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
 	font-family: 'Press Start 2P', sans-serif;
 	font-size: 14px;
+	text-align: center;
 	z-index: 999;
 	color: var(--score);
 	background-color: white;
